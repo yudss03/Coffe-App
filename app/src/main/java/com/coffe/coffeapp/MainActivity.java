@@ -1,6 +1,7 @@
 package com.coffe.coffeapp;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
@@ -29,16 +30,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    RecyclerView recyclerView;
-    LinearLayoutManager linearLayoutManager;
-    AdapterData adapterData;
-    DatabaseReference reference;
-    ProductsAdapter productsAdapter;
-    ArrayList<DataProducts> dataProducts;
-    List<String> productTitle, productPrice;
-
-//    OUR PRODUCTS CODE
-    List<String>  ourProductsTitle, ourProductsPrice;
 
 //    BOTTOM NAVIGATION CODE
     private BottomNavigationView bottomNavigationView;
@@ -52,85 +43,32 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 //        PRODUCT FIREBASE CODE START
-        productTitle = new ArrayList<>();
-        productPrice = new ArrayList<>();
-        recyclerView = findViewById(R.id.productCard);
-
-        productTitle.add("Kopi Robusta");
-        productPrice.add("IDR 20.000");
-        productTitle.add("Kopi Robusta");
-        productPrice.add("IDR 20.000");
-        productTitle.add("Kopi Robusta");
-        productPrice.add("IDR 20.000");
-        productTitle.add("Kopi Robusta");
-        productPrice.add("IDR 20.000");
-        productTitle.add("Kopi Robusta");
-        productPrice.add("IDR 20.000");
-        productTitle.add("Kopi Robusta");
-        productPrice.add("IDR 20.000");
-
-        linearLayoutManager = new LinearLayoutManager(this, linearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(linearLayoutManager);
-        adapterData = new AdapterData(this, productTitle, productPrice);
-        recyclerView.setAdapter(adapterData);
-//        PRODUCT FIREBASE CODE END
-
-//        OUR PRODUCTS CODE
-        ourProductsTitle = new ArrayList<>();
-        ourProductsPrice = new ArrayList<>();
-        recyclerView = findViewById(R.id.ourProductsCard);
-
-        ourProductsTitle.add("Kopi Robusta");
-        ourProductsPrice.add("IDR 20.000");
-        ourProductsTitle.add("Kopi Robusta");
-        ourProductsPrice.add("IDR 20.000");
-        ourProductsTitle.add("Kopi Robusta");
-        ourProductsPrice.add("IDR 20.000");
-        ourProductsTitle.add("Kopi Robusta");
-        ourProductsPrice.add("IDR 20.000");
-
-        linearLayoutManager = new LinearLayoutManager(this, linearLayoutManager.VERTICAL, false);
-        recyclerView.setLayoutManager(linearLayoutManager);
-
-        productsAdapter = new ProductsAdapter(this, ourProductsTitle, ourProductsTitle);
-        recyclerView.setAdapter(productsAdapter);
-        productsAdapter.notifyDataSetChanged();
 
 //        BOTTOM NAVIGATION CODE
-        bottomNavigationView = findViewById(R.id.bottomNavigation);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
         frameLayout = findViewById(R.id.frameLayout);
+        bottomNavigationView.setSelectedItemId(R.id.navHome);
 
         if(savedInstanceState == null) {
             loadFragment(new HomeFragment());
         }
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @SuppressLint("NonConstantResourceId")
+
+        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-
-                Fragment selectedFragment = null;
-
-
-                switch (menuItem.getItemId()) {
-                    case 1:
-                        selectedFragment = new HomeFragment();
-                        break;
-                    case 2:
-                        selectedFragment = new PointFragment();
-                        break;
-                    case 3:
-                        selectedFragment = new OrderFragment();
-                        break;
-                    case 4:
-                        selectedFragment = new ProfileFragment();
-                        break;
+                if (menuItem.getItemId() == R.id.navHome) {
+                    loadFragment(new HomeFragment());
+                    return false;
+                } else if (menuItem.getItemId() == R.id.navPoint) {
+                    loadFragment(new PointFragment());
+                    return false;
+                } else if (menuItem.getItemId() == R.id.navOrder) {
+                    loadFragment(new OrderFragment());
+                    return false;
+                } else if (menuItem.getItemId() == R.id.navProfile) {
+                    loadFragment(new ProfileFragment());
+                    return false;
                 }
-
-                if (selectedFragment != null) {
-                    loadFragment(selectedFragment);
-                }
-
-                loadFragment(new HomeFragment());
                 return true;
             }
         });
