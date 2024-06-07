@@ -3,6 +3,7 @@ package com.coffe.coffeapp;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,6 +38,7 @@ public class AdapterData extends RecyclerView.Adapter<AdapterData.HolderData> {
 
     public class HolderData extends RecyclerView.ViewHolder {
         TextView txtTitle, txtPrice;
+        ImageView img;
 
         public HolderData(@NonNull View itemView) {
             super(itemView);
