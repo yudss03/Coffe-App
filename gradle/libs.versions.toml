@@ -15,6 +15,7 @@ recyclerviewVersion = "1.2.0-alpha06"
 firebaseDatabase = "21.0.0"
 googleGmsGoogleServices = "4.4.1"
 firebaseAuth = "23.0.0"
+recyclerviewV7 = "28.0.0"
 
 [libraries]
 autoimageslider = { module = "com.github.smarteist:autoimageslider", version.ref = "autoimageslider" }
@@ -32,6 +33,7 @@ recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version
 androidx-recyclerview = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerviewVersion" }
 firebase-database = { group = "com.google.firebase", name = "firebase-database", version.ref = "firebaseDatabase" }
 firebase-auth = { group = "com.google.firebase", name = "firebase-auth", version.ref = "firebaseAuth" }
+recyclerview-v7 = { group = "com.android.support", name = "recyclerview-v7", version.ref = "recyclerviewV7" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

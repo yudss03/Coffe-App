@@ -3,13 +3,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/coffe"
     tools:context=".PointFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Hello this fragment point" />
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:gravity="center" >
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Points"
+            android:textAlignment="center"
+            />
+    </LinearLayout>
 </FrameLayout>

@@ -1,7 +1,6 @@
 package com.coffe.coffeapp;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
@@ -9,32 +8,17 @@ import android.widget.FrameLayout;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.coffe.coffeapp.model.DataProducts;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
 //    BOTTOM NAVIGATION CODE
     private BottomNavigationView bottomNavigationView;
-    public FrameLayout frameLayout;
-
+    private FrameLayout frameLayout;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -42,42 +26,44 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-//        PRODUCT FIREBASE CODE START
-
 //        BOTTOM NAVIGATION CODE
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+        bottomNavigationView = findViewById(R.id.bottomNav);
         frameLayout = findViewById(R.id.frameLayout);
-        bottomNavigationView.setSelectedItemId(R.id.navHome);
+        loadFragment(new HomeFragment(), true);
 
-        if(savedInstanceState == null) {
-            loadFragment(new HomeFragment());
-        }
-
-        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                if (menuItem.getItemId() == R.id.navHome) {
-                    loadFragment(new HomeFragment());
-                    return false;
-                } else if (menuItem.getItemId() == R.id.navPoint) {
-                    loadFragment(new PointFragment());
-                    return false;
-                } else if (menuItem.getItemId() == R.id.navOrder) {
-                    loadFragment(new OrderFragment());
-                    return false;
-                } else if (menuItem.getItemId() == R.id.navProfile) {
-                    loadFragment(new ProfileFragment());
-                    return false;
+                int itemId = menuItem.getItemId();
+
+                if (itemId == R.id.navHome) {
+                    loadFragment(new HomeFragment(), false);
+                    return true;
+                } else if (itemId == R.id.navPoint) {
+                    loadFragment(new PointFragment(), false);
+                    return true;
+                } else if (itemId == R.id.navOrder) {
+                    loadFragment(new OrderFragment(), false);
+                    return  true;
+                } else if (itemId == R.id.navProfile) {
+                    loadFragment(new ProfileFragment(), false);
+                    return true;
                 }
-                return true;
+
+                return false;
             }
         });
     }
 
-    private void loadFragment(Fragment fragment) {
+    private void loadFragment(Fragment fragment, boolean isAppInitialized) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout, new HomeFragment());
+        if (isAppInitialized) {
+            fragmentTransaction.add(R.id.frameLayout, fragment);
+        } else {
+            fragmentTransaction.add(R.id.frameLayout, fragment);
+        }
+
         fragmentTransaction.commit();
     }
 }
