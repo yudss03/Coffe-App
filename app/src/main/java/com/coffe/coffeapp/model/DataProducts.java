@@ -7,7 +7,7 @@ public class DataProducts {
         return productName;
     }
 
-    public int getProductPrice()     {
+    public int getProductPrice() {
         return productPrice;
     }
 

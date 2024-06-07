@@ -16,11 +16,12 @@
         android:layout_weight="1"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
+        android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         app:menu="@menu/bottom_nav_item"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
         android:background="@color/almond"
-        app:itemPaddingBottom="5dp"
         android:layout_height="wrap_content"
         />
 </LinearLayout>
