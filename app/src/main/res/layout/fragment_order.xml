@@ -6,6 +6,7 @@
     tools:context=".OrderFragment">
 
     <LinearLayout
+        android:gravity="center_horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -18,13 +19,51 @@
 
         </LinearLayout>
 
+        <View
+            android:layout_width="320dp"
+            android:layout_height="1dp"
+            android:background="@color/almond" />
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/shopping_bag"
+            android:layout_gravity="center_horizontal" />
+
+        <View
+            android:layout_width="320dp"
+            android:layout_height="1dp"
+            android:background="@color/almond" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your Order"
+            android:text="No Orders Yet"
+            android:layout_marginTop="10dp"
+            android:textSize="30sp"
+            android:textStyle="bold"
             android:textColor="@color/black"
-            android:layout_gravity="center"
+            android:layout_gravity="center_horizontal"
             />
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
+            android:background="@color/almond"
+            android:text="ORDER NOW"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="320dp"
+            android:layout_height="1dp"
+            android:background="@color/almond" />
     </LinearLayout>
 
 </FrameLayout>

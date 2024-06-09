@@ -11,6 +11,7 @@
         android:orientation="vertical"
         android:background="@color/coffe" >
         <RelativeLayout
+            android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="50dp" >
             <TextView
@@ -27,63 +28,258 @@
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            >
 
-            <RelativeLayout
-                android:layout_width="370dp"
-                android:layout_height="100dp"
-                android:layout_gravity="center_horizontal"
-                android:background="@drawable/almond_shape_container" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
 
-                <LinearLayout
-                    android:id="@+id/photoProfile"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="20dp"
-                    android:background="@drawable/circle_container" />
+                <RelativeLayout
+                    android:layout_width="370dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/almond_shape_container" >
 
-                <LinearLayout
-                    android:id="@+id/userContact"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/photoProfile"
-                    android:layout_centerVertical="true"
-                    android:orientation="vertical"
-                    android:layout_marginLeft="20dp"
-                    >
+                    <LinearLayout
+                        android:id="@+id/photoProfile"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:orientation="vertical"
+                        android:background="@drawable/circle_container" />
 
-                    <TextView
+                    <LinearLayout
+                        android:id="@+id/userContact"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Yudhistira"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:textSize="17dp" />
+                        android:layout_toRightOf="@+id/photoProfile"
+                        android:layout_centerVertical="true"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="20dp"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Yudhistira"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:textSize="17dp" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="08956784302"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            />
+                    </LinearLayout>
+
                     <TextView
+                        android:layout_toRightOf="@+id/userContact"
+                        android:layout_marginLeft="120dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="08956784302"
-                        android:textStyle="bold"
+                        android:text=">"
                         android:textColor="@color/black"
+                        android:textSize="23dp"
+                        android:layout_centerVertical="true"
                         />
+
+                </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:orientation="vertical" >
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="20dp"
+                        android:orientation="vertical" >
+
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+                        <View
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:background="@drawable/shopping_bag"
+                            />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="All orders"
+                            android:textSize="20sp"
+                            android:layout_marginLeft="10dp"
+                            android:textColor="@color/black"
+                            android:layout_gravity="center_vertical" />
+                    </LinearLayout>
+                        <View
+                            android:layout_width="320dp"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="20dp"
+                            android:background="@color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical"
+                        android:paddingLeft="20dp">
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/shopping_bag" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="10dp"
+                                android:text="Set Payment Method"
+                                android:textColor="@color/black"
+                                android:textSize="20sp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="320dp"
+                            android:layout_height="1dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@color/black" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical" >
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
+
+                            <View
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/shopping_bag"
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="10dp"
+                                android:text="Delivery Address"
+                                android:textColor="@color/black"
+                                android:textSize="20sp" />
+                        </LinearLayout>
+                        <View
+                            android:layout_width="320dp"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="20dp"
+                            android:background="@color/black" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical" >
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
+
+                            <View
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/shopping_bag"
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Help"
+                                android:textSize="20sp"
+                                android:layout_marginLeft="10dp"
+                                android:textColor="@color/black"
+                                android:layout_gravity="center_vertical" />
+                        </LinearLayout>
+                        <View
+                            android:layout_width="320dp"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="20dp"
+                            android:background="@color/black" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="20dp"
+                        android:layout_marginTop="10dp"
+                        android:orientation="vertical" >
+
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            >
+
+                            <View
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:background="@drawable/shopping_bag"
+                                />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Merchandise"
+                                android:textSize="20sp"
+                                android:layout_marginLeft="10dp"
+                                android:textColor="@color/black"
+                                android:layout_gravity="center_vertical" />
+                        </LinearLayout>
+                        <View
+                            android:layout_width="320dp"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="20dp"
+                            android:background="@color/black" />
+                    </LinearLayout>
                 </LinearLayout>
 
-                <TextView
-                    android:layout_toRightOf="@+id/userContact"
-                    android:layout_marginLeft="140dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text=">"
-                    android:textColor="@color/black"
-                    android:textSize="23dp"
-                    android:layout_centerVertical="true"
-                    />
 
-
-
-            </RelativeLayout>
-
+            </LinearLayout>
         </ScrollView>
     </LinearLayout>
 </FrameLayout>

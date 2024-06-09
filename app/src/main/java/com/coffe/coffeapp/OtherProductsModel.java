@@ -1,14 +1,14 @@
 package com.coffe.coffeapp;
 
-public class ProductModel {
-    String productTitle;
-    int productPrice;
+public class OtherProductsModel {
+    private String productTitle;
+    private int productPrice;
     private String productImg;
 
-    public ProductModel() {
+    public OtherProductsModel() {
 
     }
-    public ProductModel(String productTitle, int productPrice, String productImg) {
+    public OtherProductsModel(String productTitle, int productPrice, String productImg) {
         this.productTitle = productTitle;
         this.productPrice = productPrice;
         this.productImg = productImg;
@@ -22,6 +22,5 @@ public class ProductModel {
         return productPrice;
     }
 
-    public String getProductImg() { return productImg; }
-
+    public String getProductImg() { return  productImg; }
 }

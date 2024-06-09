@@ -3,7 +3,6 @@ package com.coffe.coffeapp;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,16 +18,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 public class HomeFragment extends Fragment {
     RecyclerView recyclerView, recyclerViewOther;
     LinearLayoutManager linearLayoutManager;
     GridLayoutManager gridLayoutManager;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference, databaseReference1;
     private ArrayList<ProductModel> list = new ArrayList<>();
-    private ArrayList<OtherProducts> otherList = new ArrayList<>();
+    private ArrayList<OtherProductsModel> otherList = new ArrayList<>();
     public HomeFragment() {
 
     }
@@ -44,6 +43,7 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         initRecylerView(view);
         initOtherRecyclerView(view);
+        clearPicassoCache();
 //        buildData();
         return view;
     }
@@ -51,7 +51,7 @@ public class HomeFragment extends Fragment {
     private void initRecylerView(View view) {
         recyclerView = view.findViewById(R.id.productCard);
         linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false);
-
+    
         recyclerView.setLayoutManager(linearLayoutManager);
         AdapterData adapterData = new AdapterData(list);
         databaseReference = FirebaseDatabase.getInstance().getReference("products");
@@ -71,6 +71,7 @@ public class HomeFragment extends Fragment {
             }
         });
         recyclerView.setAdapter(adapterData);
+        adapterData.notifyDataSetChanged();
     }
 
     private void initOtherRecyclerView(View view) {
@@ -85,11 +86,12 @@ public class HomeFragment extends Fragment {
         };
         recyclerViewOther.setLayoutManager(gridLayoutManager);
         OtherAdapterData otherAdapterData = new OtherAdapterData(otherList);
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        databaseReference1 = FirebaseDatabase.getInstance().getReference("products");
+        databaseReference1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    OtherProducts otherProducts = dataSnapshot.getValue(OtherProducts.class);
+                    OtherProductsModel otherProducts = dataSnapshot.getValue(OtherProductsModel.class);
                     otherList.add(otherProducts);
                 }
                 otherAdapterData.notifyDataSetChanged();
@@ -101,7 +103,24 @@ public class HomeFragment extends Fragment {
             }
         });
         recyclerViewOther.setAdapter(otherAdapterData);
+        otherAdapterData.notifyDataSetChanged();
     }
+
+    private void clearPicassoCache() {
+        try {
+            File cache = new File(getActivity().getCacheDir(), "picasso-cache");
+            if (cache.exists()) {
+                File[] files = cache.listFiles();
+                if (files != null) {
+                    for (File file : files) {
+                        file.delete();
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }   
 
 //    private void buildData() {
 //        list.add(new ProductModel("Kopi Robusta", 20000));

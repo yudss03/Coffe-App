@@ -22,7 +22,7 @@
             app:cardCornerRadius="8dp">
 
             <ImageView
-                android:id="@+id/card_image"
+                android:id="@+id/card_image_point"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:scaleType="centerCrop"
@@ -31,6 +31,7 @@
 
 
         <LinearLayout
+            android:id="@+id/productProfile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -38,22 +39,21 @@
 
             <!-- Title, secondary and supporting text -->
             <TextView
-                android:id="@+id/otherProductTitle"
+                android:id="@+id/productTitlefromPoint"
                 android:layout_width="wrap_content"
                 android:layout_height="30sp"
                 android:text="Kopi Robusta"
                 android:textColor="@color/black"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:textAppearance="?attr/textAppearanceHeadline6"
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/otherProductsPrice"
+                android:id="@+id/productPointfromPoint"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:text="IDR 20.000"
-
                 android:textAppearance="?attr/textAppearanceBody2"
                 android:textColor="@color/black"
                 android:textSize="13sp" />
